@@ -59,5 +59,8 @@ namespace MonitorService
 
         private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
         private System.ServiceProcess.ServiceInstaller serviceInstaller1;
+
     }
+
+    
 }

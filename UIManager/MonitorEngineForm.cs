@@ -2,25 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Configuration;
 using System.Linq;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using BL;
+using Common;
 
 namespace UIManager
 {
     public partial class MonitorEngineForm : Form
     {
+        private ServiceController _serviceController { get; set; }
         public MonitorEngineForm()
         {
             InitializeComponent();
+
+            var serviceName = ConfigurationManager.AppSettings["serviceName"];
+            _serviceController = new ServiceController(serviceName, Environment.MachineName);
         }
 
         private void MonitorEngineForm_Load(object sender, EventArgs e)
         {
+
             dataGridViewPerformance.DataSource = PerformanceAccess.GetAll();
             //dataGridViewPerformance.DataBind();
 
@@ -55,7 +62,45 @@ namespace UIManager
 
         }
 
+        private void BtnServiceSwitch_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                if (lblServiceStatus.Text.ToLower() != "stopped")
+                {
+                    _serviceController.Stop();
+                    _serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
+                    btnServiceSwitch.Text = "Start";
+                    //lblServiceStatus.Text = "Stopped";
+                }
+                else
+                {
+                    _serviceController.Start();
+                    _serviceController.WaitForStatus(ServiceControllerStatus.Running);
+                    btnServiceSwitch.Text = "Stop";
+                    //lblServiceStatus.Text = "Running";
+                }
+
+                lblServiceStatus.Text = _serviceController.Status.ToString();
+            }
+            catch (Exception ex)
+            {
+                Logging.WriteLog(ex.Message, ex.InnerException.Message);
+                _serviceController.Dispose();
+            }
 
 
+        }
+
+        private static ServiceController CreateService()
+        {
+
+            var serviceName = ConfigurationManager.AppSettings["serviceName"];
+            var serviceController = new ServiceController(serviceName);
+
+            return serviceController;
+        }
     }
 }

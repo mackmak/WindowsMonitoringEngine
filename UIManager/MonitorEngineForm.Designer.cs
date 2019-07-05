@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -43,8 +42,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridViewPerformance = new System.Windows.Forms.DataGridView();
-            this.btnToggle = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnServiceSwitch = new System.Windows.Forms.Button();
+            this.lblServiceStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
@@ -73,8 +72,8 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.dataGridViewPerformance);
-            this.tabPage1.Controls.Add(this.btnToggle);
-            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.btnServiceSwitch);
+            this.tabPage1.Controls.Add(this.lblServiceStatus);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -86,49 +85,49 @@
             // 
             // chart2
             // 
-            chartArea1.AxisX.MajorGrid.LineWidth = 0;
-            chartArea1.AxisY.MajorGrid.LineWidth = 0;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea3.AxisX.MajorGrid.LineWidth = 0;
+            chartArea3.AxisY.MajorGrid.LineWidth = 0;
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(303, 405);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.BorderWidth = 5;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series1.IsVisibleInLegend = false;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "SampleDate";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            series1.YValueMembers = "MemValue";
-            this.chart2.Series.Add(series1);
+            series3.BorderWidth = 5;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series3.IsVisibleInLegend = false;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.XValueMember = "SampleDate";
+            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            series3.YValueMembers = "MemValue";
+            this.chart2.Series.Add(series3);
             this.chart2.Size = new System.Drawing.Size(433, 300);
             this.chart2.TabIndex = 8;
             this.chart2.Text = "chart2";
             // 
             // chart1
             // 
-            chartArea2.AxisX.MajorGrid.LineWidth = 0;
-            chartArea2.AxisY.MajorGrid.LineWidth = 0;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea4.AxisX.MajorGrid.LineWidth = 0;
+            chartArea4.AxisY.MajorGrid.LineWidth = 0;
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(303, 66);
             this.chart1.Name = "chart1";
-            series2.BorderWidth = 5;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.IsVisibleInLegend = false;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.XValueMember = "SampleDate";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            series2.YValueMembers = "CpuValue";
-            this.chart1.Series.Add(series2);
+            series4.BorderWidth = 5;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.IsVisibleInLegend = false;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueMember = "SampleDate";
+            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            series4.YValueMembers = "CpuValue";
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(433, 300);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
@@ -169,23 +168,24 @@
             this.dataGridViewPerformance.TabIndex = 3;
             this.dataGridViewPerformance.UseWaitCursor = true;
             // 
-            // btnToggle
+            // btnServiceSwitch
             // 
-            this.btnToggle.Location = new System.Drawing.Point(178, 9);
-            this.btnToggle.Name = "btnToggle";
-            this.btnToggle.Size = new System.Drawing.Size(75, 23);
-            this.btnToggle.TabIndex = 2;
-            this.btnToggle.Text = "Start";
-            this.btnToggle.UseVisualStyleBackColor = true;
+            this.btnServiceSwitch.Location = new System.Drawing.Point(178, 9);
+            this.btnServiceSwitch.Name = "btnServiceSwitch";
+            this.btnServiceSwitch.Size = new System.Drawing.Size(75, 23);
+            this.btnServiceSwitch.TabIndex = 2;
+            this.btnServiceSwitch.Text = "Start";
+            this.btnServiceSwitch.UseVisualStyleBackColor = true;
+            this.btnServiceSwitch.Click += new System.EventHandler(this.BtnServiceSwitch_Click);
             // 
-            // label2
+            // lblServiceStatus
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Stopped";
+            this.lblServiceStatus.AutoSize = true;
+            this.lblServiceStatus.Location = new System.Drawing.Point(109, 14);
+            this.lblServiceStatus.Name = "lblServiceStatus";
+            this.lblServiceStatus.Size = new System.Drawing.Size(47, 13);
+            this.lblServiceStatus.TabIndex = 1;
+            this.lblServiceStatus.Text = "Stopped";
             // 
             // label1
             // 
@@ -230,8 +230,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridViewPerformance;
-        private System.Windows.Forms.Button btnToggle;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnServiceSwitch;
+        private System.Windows.Forms.Label lblServiceStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label3;
