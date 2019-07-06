@@ -35,7 +35,8 @@ namespace DataAccess
             }
             catch (Exception ex)
             {
-                WriteLog(ex.Message, ex.InnerException.Message);
+                WriteLog(ex);
+                AuditLogRepository.Save(ex);
             }
 
 
@@ -56,7 +57,7 @@ namespace DataAccess
             }
             catch (Exception ex)
             {
-                WriteLog(ex.Message, ex.InnerException.Message);
+                WriteLog(ex);
             }
 
             return null;

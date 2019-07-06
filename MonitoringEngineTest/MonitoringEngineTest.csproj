@@ -58,13 +58,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MonitoringEngineTest.cs" />
+    <Compile Include="MonitoringEngineDatabaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{20321146-3AE0-488A-B1D5-D2D2D58BE6AA}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{d85abcb9-fdc0-4226-a93f-f79ece4361ab}</Project>
       <Name>DataAccess</Name>

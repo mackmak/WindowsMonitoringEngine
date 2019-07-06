@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 using DataAccess;
 
 namespace BL
 {
-    public class AuditLogAccess
+    public class AuditLogAccess : Logging
     {
         public static void Save(AuditLog auditLog)
         {
@@ -19,20 +20,16 @@ namespace BL
             return AuditLogRepository.RetrieveAll();
         }
 
-        public static void Save(string message, string innerException, string source, 
-            string targetSite, string stackTrace)
+        public static void Save(Exception exception)
         {
-            var auditLog = new AuditLog
+            try
             {
-                Message = message,
-                InnerException = innerException,
-                Source = source,
-                StackTrace = stackTrace,
-                TargetSite = targetSite,
-                ExceptionDate = DateTime.Now
-            };
-
-            AuditLogRepository.Save(auditLog);
+                AuditLogRepository.Save(exception);
+            }
+            catch (Exception ex)
+            {
+                WriteLog(ex);
+            }
         }
     }
 }

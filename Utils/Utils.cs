@@ -59,7 +59,7 @@ namespace Common
             }
             catch (Exception ex)
             {
-                Logging.WriteLog(ex.Message, ex.InnerException.Message);
+                Logging.WriteLog(ex);
             }
 
             return null;

@@ -88,8 +88,9 @@ namespace UIManager
             }
             catch (Exception ex)
             {
-                Logging.WriteLog(ex.Message, ex.InnerException.Message);
+                Logging.WriteLog(ex);
                 _serviceController.Stop();
+                AuditLogAccess.Save(ex);
             }
 
 

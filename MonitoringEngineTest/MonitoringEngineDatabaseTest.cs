@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataAccess;
+using BL;
 
 namespace MonitoringEngineTest
 {
     [TestClass]
-    public class MonitoringEngineTest
+    public class MonitoringEngineDatabaseTest
     {
         public void FixEfProviderServicesProblem()
         {
@@ -22,7 +23,7 @@ namespace MonitoringEngineTest
             var performanceResults = PerformanceRepository.GetAll();
 
             //assert
-            Assert.AreEqual(performanceResults.Count,16);
+            Assert.AreNotEqual(performanceResults.Count,0);
         }
 
         [TestMethod]
@@ -47,13 +48,25 @@ namespace MonitoringEngineTest
         [TestMethod]
         public void QueryAuditLogTest()
         {
-            //TODO: test here
+            //Assign/Act
+            var query = AuditLogAccess.GetAll();
+
+            //Assert
+            Assert.AreNotEqual(query.Count, 0);
+
         }
 
         [TestMethod]
         public void InsertAuditLogTest()
         {
-            //TODO: test here
+            try
+            {
+                throw new Exception("Log Saving Test");
+            }
+            catch (Exception ex)
+            {
+                AuditLogAccess.Save(ex);
+            }
         }
 
     }

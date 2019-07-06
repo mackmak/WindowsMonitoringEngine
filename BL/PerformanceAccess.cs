@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 using DataAccess;
 
 namespace BL
 {
-    public class PerformanceAccess
+    public class PerformanceAccess : Logging
     {
         public static IList<Performance> GetAll()
         {
@@ -21,14 +22,23 @@ namespace BL
 
         public static bool Save(int cpuValue, int memValue, DateTime sampleDate)
         {
-            var performance = new Performance
+            try
             {
-                CpuValue = cpuValue,
-                MemValue = memValue,
-                SampleDate = sampleDate
-            };
+                //this should be in the Performance class, but as this project is going EF database first, that class is generated
+                var performance = new Performance
+                {
+                    CpuValue = cpuValue,
+                    MemValue = memValue,
+                    SampleDate = sampleDate
+                };
 
-            return PerformanceRepository.Save(performance);
+                return PerformanceRepository.Save(performance);
+            }
+            catch (Exception ex)
+            {
+                WriteLog(ex);
+            }
+            return false;
         }
     }
 }

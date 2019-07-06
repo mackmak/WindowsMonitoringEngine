@@ -8,14 +8,12 @@ namespace CommonTest
     [TestClass]
     public class UtilsTest
     {
-
         [TestMethod]
         public void GetDomainUserNameTest()
         {
             //Assign
             var domain = Environment.UserDomainName;
             var userPrincipal = UserPrincipal.Current;
-            var firstname = userPrincipal.GivenName;
 
             //Assert
             Assert.AreEqual($"{domain}\\{userPrincipal.Name}", "MARCOS-SSD\\Marcos");
@@ -25,16 +23,16 @@ namespace CommonTest
         public void LoggingTest()
         {
             //Assign
-            var log = new Logging
+            try
             {
-                Exception = "Exception message",
-                InnerException = "Inner Exception Message",
-                Source = "Source"
-                //ExceptionDate = DateTime.Now
-            };
+                throw new Exception("Logging Test");
+            }
+            catch (Exception ex)
+            {
+                //Act
+                Logging.WriteLog(ex);
+            }
 
-            //Act
-            //Logging.WriteLog(log);
         }
     }
 }

@@ -28,14 +28,14 @@ namespace Common
                 var propertyValue = property.GetValue(log);
                 if (propertyValue != null)
                 {
-                    sb.AppendLine(propertyValue.ToString());
+                    sb.AppendLine($"{property.Name}: {propertyValue.ToString()}");
                     sb.AppendLine();
                 }
-
-                sb.AppendLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                sb.AppendLine("--------------------------------------------------------------");
-                sb.AppendLine();
             }
+
+            sb.AppendLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            sb.AppendLine("--------------------------------------------------------------");
+            sb.AppendLine();
             CreateLogFile(sb);
         }
 
@@ -44,36 +44,14 @@ namespace Common
             var log = new Logging
             {
                 Exception = ex.Message,
-                InnerException = ex.InnerException.Message,
+                InnerException = ex.InnerException?.Message,
                 Source = ex.Source,
                 StackTrace = ex.StackTrace,
                 TargetSite = ex.TargetSite.Name,
-                
+
             };
 
             PersistLog(log);
-
-        }
-
-
-        public static void WriteLog(params string[] args)
-        {
-
-            var sb = new StringBuilder();
-
-            foreach (var logItem in args)
-            {
-                sb.AppendLine(logItem);
-                sb.AppendLine();
-            }
-
-            sb.AppendLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            sb.AppendLine("--------------------------------------------------------------");
-            sb.AppendLine();
-
-            //File.AppendAllText($"{Environment.CurrentDirectory}\\log.txt", sb.ToString());
-            CreateLogFile(sb);
-
 
         }
 
