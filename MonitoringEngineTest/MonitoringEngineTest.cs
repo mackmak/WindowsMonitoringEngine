@@ -17,16 +17,16 @@ namespace MonitoringEngineTest
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
         [TestMethod]
-        public void QueryTest()
+        public void QueryPerformanceTest()
         {
-            var performanceResults = PerformanceRepository.RetrieveAll();
+            var performanceResults = PerformanceRepository.GetAll();
 
             //assert
             Assert.AreEqual(performanceResults.Count,16);
         }
 
         [TestMethod]
-        public void InsertTest()
+        public void InsertPerformanceTest()
         {
             //Assign
             var performance = new Performance
@@ -43,6 +43,17 @@ namespace MonitoringEngineTest
             //Assert
             Assert.AreEqual(success, true);
 
+        }
+        [TestMethod]
+        public void QueryAuditLogTest()
+        {
+            //TODO: test here
+        }
+
+        [TestMethod]
+        public void InsertAuditLogTest()
+        {
+            //TODO: test here
         }
 
     }

@@ -11,15 +11,15 @@ namespace BL
     {
         public static IList<Performance> GetAll()
         {
-            return PerformanceRepository.RetrieveAll();
+            return PerformanceRepository.GetAll();
         }
 
-        public static bool InsertPerformanceValue(Performance performance)
+        public static bool Save(Performance performance)
         {
             return PerformanceRepository.Save(performance);
         }
 
-        public static bool InsertPerformanceValue(int cpuValue, int memValue, DateTime sampleDate)
+        public static bool Save(int cpuValue, int memValue, DateTime sampleDate)
         {
             var performance = new Performance
             {

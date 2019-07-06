@@ -33,7 +33,7 @@ namespace WindowsMonitoringEngine
             //var tableAdapter = new DataCollectedTableAdapter();
             //tableAdapter.InsertNewRecord(GetCpuValue(), GetMemValue(), DateTime.Now);
 
-            PerformanceAccess.InsertPerformanceValue(Common.Utils.GetCpuValue(),
+            PerformanceAccess.Save(Common.Utils.GetCpuValue(),
                 Common.Utils.GetMemValue(), DateTime.Now);
         } 
 

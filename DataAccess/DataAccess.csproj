@@ -53,6 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditLog.cs">
+      <DependentUpon>MonitoringEngineModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLogRepository.cs" />
     <Compile Include="MonitoringContext.cs" />
     <Compile Include="MonitoringEngineModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +94,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Utils\Common.csproj">
+      <Project>{cf398ca6-1d29-4aa0-afa9-c1d8e73388c0}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="MonitoringEngineModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MonitoringEngineModel.edmx</DependentUpon>
@@ -100,12 +110,6 @@
       <DependentUpon>MonitoringEngineModel.edmx</DependentUpon>
       <LastGenOutput>MonitoringEngineModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utils\Common.csproj">
-      <Project>{cf398ca6-1d29-4aa0-afa9-c1d8e73388c0}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

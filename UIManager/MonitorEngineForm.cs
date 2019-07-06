@@ -22,7 +22,8 @@ namespace UIManager
             InitializeComponent();
 
             var serviceName = ConfigurationManager.AppSettings["serviceName"];
-            _serviceController = new ServiceController(serviceName, Environment.MachineName);
+            _serviceController = new ServiceController(
+                serviceName, Environment.MachineName);
         }
 
         private void MonitorEngineForm_Load(object sender, EventArgs e)
@@ -88,19 +89,11 @@ namespace UIManager
             catch (Exception ex)
             {
                 Logging.WriteLog(ex.Message, ex.InnerException.Message);
-                _serviceController.Dispose();
+                _serviceController.Stop();
             }
 
 
         }
 
-        private static ServiceController CreateService()
-        {
-
-            var serviceName = ConfigurationManager.AppSettings["serviceName"];
-            var serviceController = new ServiceController(serviceName);
-
-            return serviceController;
-        }
     }
 }

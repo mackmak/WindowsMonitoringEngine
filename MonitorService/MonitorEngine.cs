@@ -32,7 +32,7 @@ namespace MonitorService
         private static void OnTimedEvent(Object source, ElapsedEventArgs eventsArgs)
         {
 
-            PerformanceAccess.InsertPerformanceValue(Common.Utils.GetCpuValue(),
+            PerformanceAccess.Save(Common.Utils.GetCpuValue(),
                 Common.Utils.GetMemValue(), DateTime.Now);
         }
 

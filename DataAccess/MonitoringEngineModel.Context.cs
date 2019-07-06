@@ -26,5 +26,6 @@ namespace DataAccess
         }
     
         public virtual DbSet<Performance> Performances { get; set; }
+        public virtual DbSet<AuditLog> AuditLogs { get; set; }
     }
 }

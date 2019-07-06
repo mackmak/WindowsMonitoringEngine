@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Common;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
 
 namespace DataAccess
 {
-    public class PerformanceRepository : Logging
+    public class AuditLogRepository:Logging
     {
-
-        public static bool Save(Performance performance)
+        public static bool Save(AuditLog auditLog)
         {
             DbContextTransaction transaction = null;
             try
@@ -21,16 +20,14 @@ namespace DataAccess
                 {
                     using (transaction = _db.Database.BeginTransaction())
                     {
-
-                        _db.Performances.Add(performance);
-                        //_db.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[Performance] ON");
+                        _db.AuditLogs.Add(auditLog);
+                        //_db.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[AuditLog] ON");
                         _db.SaveChanges();
-                        // _db.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[Performance] OFF");
+                        // _db.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[AuditLog] OFF");
                         transaction.Commit();
 
                         return true;
                     }
-
                 }
             }
             catch (Exception ex)
@@ -38,19 +35,18 @@ namespace DataAccess
                 WriteLog(ex.Message, ex.InnerException.Message);
             }
 
-
             return false;
         }
-
-        public static IList<Performance> GetAll()
+        public static IList<AuditLog> RetrieveAll()
         {
+            DbContextTransaction transaction = null;
             try
             {
                 using (var _db = new MonitoringContext())
                 {
-                    using (var transaction = _db.Database.BeginTransaction())
+                    using (transaction = _db.Database.BeginTransaction())
                     {
-                        return _db.Performances.ToList();
+                        return _db.AuditLogs.ToList();
                     }
                 }
             }
@@ -61,7 +57,7 @@ namespace DataAccess
 
             return null;
         }
-
     }
 
+    
 }
