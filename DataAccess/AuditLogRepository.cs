@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class AuditLogRepository:Logging
+    public class AuditLogRepository : Logging
     {
         public static bool Save(AuditLog auditLog)
         {
@@ -49,8 +49,8 @@ namespace DataAccess
                         //this should be in the AuditLog class, but as this project is going EF database first, that class is generated
                         var auditLog = new AuditLog
                         {
-                            Message = exception.Message,
-                            InnerException = exception.InnerException?.Message,
+                            Exception = exception.Message,
+                            InnerException = exception.InnerException?.InnerException?.Message,
                             Source = exception.Source,
                             StackTrace = exception.StackTrace,
                             TargetSite = exception.TargetSite.Name,
@@ -91,11 +91,32 @@ namespace DataAccess
             catch (Exception ex)
             {
                 WriteLog(ex);
+                Save(ex);
             }
 
             return null;
         }
+
+        public static bool DeleteAll()
+        {
+            try
+            {
+                using (var _db = new MonitoringContext())
+                {
+                    _db.Database.ExecuteSqlCommand("TRUNCATE TABLE [AuditLog]");
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog(ex);
+                Save(ex);
+            }
+
+            return false;
+        }
     }
 
-    
+
 }

@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9247288029934388a70945745ac07908" Name="Diagram1">
         <EntityTypeShape EntityType="MonitorServiceDBModel.Performance" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MonitorServiceDBModel.AuditLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MonitorServiceDBModel.AuditLog" Width="1.5" PointX="0.75" PointY="1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

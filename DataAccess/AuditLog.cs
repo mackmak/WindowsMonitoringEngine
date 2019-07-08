@@ -15,7 +15,7 @@ namespace DataAccess
     public partial class AuditLog
     {
         public int ID { get; set; }
-        public string Message { get; set; }
+        public string Exception { get; set; }
         public string InnerException { get; set; }
         public string Source { get; set; }
         public string TargetSite { get; set; }

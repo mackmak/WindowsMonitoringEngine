@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DataAccess;
 using BL;
+using DataAccess;
 
 namespace MonitoringEngineTest
 {
@@ -23,7 +23,7 @@ namespace MonitoringEngineTest
             var performanceResults = PerformanceRepository.GetAll();
 
             //assert
-            Assert.AreNotEqual(performanceResults.Count,0);
+            Assert.AreNotEqual(performanceResults.Count, 0);
         }
 
         [TestMethod]
@@ -59,14 +59,19 @@ namespace MonitoringEngineTest
         [TestMethod]
         public void InsertAuditLogTest()
         {
+            //Assign
+            bool success = false;
             try
             {
                 throw new Exception("Log Saving Test");
             }
             catch (Exception ex)
-            {
-                AuditLogAccess.Save(ex);
+            {//Act
+                success = AuditLogAccess.Save(ex);
             }
+
+            //Assert
+            Assert.AreEqual(success, true);
         }
 
     }

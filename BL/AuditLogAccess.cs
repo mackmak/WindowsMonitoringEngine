@@ -10,26 +10,26 @@ namespace BL
 {
     public class AuditLogAccess : Logging
     {
-        public static void Save(AuditLog auditLog)
-        {
-            AuditLogRepository.Save(auditLog);
-        }
-
         public static IList<AuditLog> GetAll()
         {
             return AuditLogRepository.RetrieveAll();
         }
 
-        public static void Save(Exception exception)
+        public static bool Save(Exception exception)
         {
-            try
-            {
-                AuditLogRepository.Save(exception);
-            }
-            catch (Exception ex)
-            {
-                WriteLog(ex);
-            }
+
+            return AuditLogRepository.Save(exception);
+
+        }
+        public static bool Save(AuditLog auditLog)
+        {
+            return AuditLogRepository.Save(auditLog);
+
+        }
+
+        public static bool DeleteAll()
+        {
+            return AuditLogRepository.DeleteAll();
         }
     }
 }

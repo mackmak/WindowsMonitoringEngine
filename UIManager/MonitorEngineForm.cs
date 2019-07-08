@@ -30,13 +30,14 @@ namespace UIManager
         {
 
             dataGridViewPerformance.DataSource = PerformanceAccess.GetAll();
-            //dataGridViewPerformance.DataBind();
+            dataGridViewLogs.DataSource = AuditLogAccess.GetAll();
 
 
             SetChart(chart1);
             SetChart(chart2);
 
-            SetUpDataGridView();
+            SetUpPerformanceDataGridView();
+            SetUpLogsDataGridView();
         }
 
         private void SetChart(Chart chart)
@@ -48,7 +49,7 @@ namespace UIManager
             chart.DataSource = PerformanceAccess.GetAll();
         }
 
-        private void SetUpDataGridView()
+        private void SetUpPerformanceDataGridView()
         {
             //hiding ID column
             dataGridViewPerformance.Columns[0].Visible = false;
@@ -96,5 +97,22 @@ namespace UIManager
 
         }
 
+        private void SetUpLogsDataGridView()
+        {
+
+            //hiding ID column
+            dataGridViewLogs.Columns[0].Visible = false;
+
+            dataGridViewLogs.Columns[2].HeaderText = "Inner Exception";
+            dataGridViewLogs.Columns[6].HeaderText = "Date";
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+
+            AuditLogAccess.DeleteAll();
+
+            dataGridViewLogs.DataSource = AuditLogAccess.GetAll();
+        }
     }
 }
