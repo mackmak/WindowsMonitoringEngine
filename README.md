@@ -6,4 +6,4 @@ it must be installed with the following command in the Developer command prompt:
 
 installutil "Path\to\bin\Debug\MonitorService.exe"
 
-Then set in an admin passowrd during installation
+Then set in an admin password during installation
